@@ -1073,7 +1073,7 @@ public class WfsFilterDelegate extends SimpleFilterDelegate<FilterType> {
 
   private JAXBElement<? extends SpatialOpsType> createSpatialOpType(
       String operation, String propertyName, String wkt, Double distance) {
-    String adjustedWkt = Antimeridian.normalizeWkt(wkt);
+    String adjustedWkt = Antimeridian.unwrapAndSplitWkt(wkt);
     switch (SPATIAL_OPERATORS.valueOf(operation)) {
       case BBOX:
         return buildBBoxType(propertyName, adjustedWkt);
